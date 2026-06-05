@@ -1,0 +1,465 @@
+{
+  "info": {
+    "_postman_id": "",
+    "name": "SocialGuard AI API - Each Algorithm",
+    "description": "REST API collection for Fake Social Media Profile Detection project. Includes separate POST requests for each machine learning algorithm.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/status",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Metadata",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/metadata",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "metadata"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sample Row",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/sample-row/31",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "sample-row",
+            "31"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST Predict by Dataset Row - Each Algorithm",
+      "description": "Use these requests to test every algorithm using a dataset row index.",
+      "item": [
+        {
+          "name": "Predict by Dataset Row - SVM",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the SVM model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"SVM\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Dataset Row - Logistic Regression",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the Logistic Regression model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"Logistic Regression\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Dataset Row - Random Forest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the Random Forest model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"Random Forest\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Dataset Row - KNN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the KNN model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"KNN\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Dataset Row - AdaBoost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the AdaBoost model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"AdaBoost\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Dataset Row - XGBoost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the XGBoost model based on an existing dataset row index.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"XGBoost\",\n  \"mode\": \"row\",\n  \"row_index\": 31\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST Predict by Manual Values - Each Algorithm",
+      "description": "Use these requests to test every algorithm using manually entered values.",
+      "item": [
+        {
+          "name": "Predict by Manual Values - SVM",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the SVM model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"SVM\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Manual Values - Logistic Regression",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the Logistic Regression model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"Logistic Regression\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Manual Values - Random Forest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the Random Forest model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"Random Forest\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Manual Values - KNN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the KNN model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"KNN\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Manual Values - AdaBoost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the AdaBoost model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"AdaBoost\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Predict by Manual Values - XGBoost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Predict using the XGBoost model based on manually entered user-profile values.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"XGBoost\",\n  \"mode\": \"manual\",\n  \"features\": {\n    \"profile_completeness\": 0.72,\n    \"account_age_days\": 300,\n    \"followers_count\": 120,\n    \"following_count\": 900,\n    \"posts_count\": 12,\n    \"post_count\": 20,\n    \"likes_mean\": 5,\n    \"comments_mean\": 1,\n    \"shares_mean\": 0,\n    \"hour_mean\": 15,\n    \"weekend_rate\": 0.2,\n    \"media_rate\": 0.5,\n    \"hashtag_mean\": 1,\n    \"is_private\": 0,\n    \"is_verified\": 0,\n    \"profile_picture\": 1,\n    \"profile_banner\": 0,\n    \"has_bio\": 1,\n    \"has_website\": 0,\n    \"has_location\": 0,\n    \"dominant_device\": \"Android\",\n    \"dominant_platform\": \"Mobile App\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "predict"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+imbalanced-learn
+xgboost
+joblib
+flask
+jupyter
+nbformat

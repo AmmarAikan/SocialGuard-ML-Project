@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialGuard AI - Fake Profile Detection</title>
+  <style>
+    :root{--bg:#f3f7fb;--card:#ffffff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--brand:#4f46e5;--brand2:#06b6d4;--good:#16a34a;--bad:#dc2626;--warn:#d97706;--dark:#111827;}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eef2ff 0%,#f8fafc 42%,#ecfeff 100%);color:var(--text)}
+    .hero{background:radial-gradient(circle at 20% 20%,rgba(6,182,212,.22),transparent 28%),radial-gradient(circle at 80% 15%,rgba(79,70,229,.22),transparent 28%),linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:46px 20px 88px;text-align:center;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;inset:auto -10% -90px -10%;height:160px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:9px 15px;border-radius:999px;font-size:13px;margin-bottom:18px}.hero h1{font-size:46px;letter-spacing:-1px;margin:0 0 10px}.hero p{max-width:880px;margin:0 auto;color:#cbd5e1;line-height:1.7}.wrap{width:min(1180px,94vw);margin:-54px auto 46px;position:relative;z-index:2}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}.stat{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 30px rgba(15,23,42,.08)}.stat b{display:block;font-size:26px}.stat span{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:1.35fr .9fr;gap:20px}.card{background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.9);box-shadow:0 18px 40px rgba(15,23,42,.08);border-radius:24px;padding:24px}.section-title{margin:0 0 18px;font-size:21px}.tabs{display:flex;gap:10px;margin:10px 0 18px}.tab{border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:10px 14px;cursor:pointer;font-weight:700;color:#475569}.tab.active{background:var(--brand);color:white;border-color:var(--brand)}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}label{display:block;font-weight:700;font-size:13px;color:#334155;margin-bottom:7px}input,select{width:100%;border:1px solid #cbd5e1;background:#f8fafc;border-radius:12px;padding:12px 13px;font-size:15px;color:#0f172a}.manual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.hidden{display:none!important}button.main{width:100%;border:0;border-radius:15px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;font-weight:900;font-size:16px;padding:15px;margin-top:18px;cursor:pointer;box-shadow:0 12px 24px rgba(79,70,229,.22)}button.main:disabled{opacity:.55;cursor:not-allowed}.hint{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.6}.result{margin-top:20px;border-radius:20px;padding:18px;border:1px solid var(--line);background:#f8fafc}.result.good{background:#f0fdf4;border-color:#bbf7d0}.result.bad{background:#fff7ed;border-color:#fed7aa}.result.manual{background:#eef2ff;border-color:#c7d2fe}.result-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:9px 12px;font-weight:900;font-size:13px;margin-left:6px}.pill.real{background:#dcfce7;color:#166534}.pill.fake{background:#fee2e2;color:#991b1b}.pill.low{background:#dcfce7;color:#166534}.pill.medium{background:#fef3c7;color:#92400e}.pill.high{background:#fee2e2;color:#991b1b}.gauge{height:12px;background:#e2e8f0;border-radius:999px;margin:12px 0;overflow:hidden}.gauge span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444);border-radius:999px;transition:width .4s}.details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.detail{background:white;border:1px solid var(--line);border-radius:14px;padding:10px;font-size:13px}.detail b{display:block;color:#64748b;font-size:12px;margin-bottom:4px}.dark{background:linear-gradient(135deg,#0f172a,#111827);color:white}.dark p{color:#d1d5db;line-height:1.6}.note{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;margin-top:16px;color:#e5e7eb;font-size:14px;line-height:1.6}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{background:#f8fafc;color:#475569}.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px}.chart-card img{width:100%;border-radius:16px;border:1px solid var(--line);background:white}.scope{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.scope-item{background:white;border:1px solid var(--line);border-radius:18px;padding:16px}.scope-item b{display:block;margin-bottom:6px}.footer{color:#64748b;text-align:center;margin-top:28px;font-size:13px}code{background:#f1f5f9;padding:3px 6px;border-radius:6px}.error{background:#fee2e2;color:#991b1b;border:1px solid #fecaca;border-radius:14px;padding:14px;margin-top:14px}.api{margin-top:20px;background:#0f172a;color:#e5e7eb;border-radius:18px;padding:16px;overflow:auto;font-size:12px}.api code{background:transparent;color:#a5f3fc;padding:0}.mini-title{font-weight:900;margin:18px 0 10px;color:#334155}.muted{color:#64748b;font-size:13px;line-height:1.6}
+    @media (max-width:1000px){.grid,.charts,.scope{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.manual-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:650px){.stats,.form-grid,.manual-grid,.details{grid-template-columns:1fr}.hero h1{font-size:34px}.wrap{width:94vw}}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="badge">🛡️ Cybersecurity Machine Learning Deployment</div>
+    <h1>SocialGuard AI</h1>
+    <p>Realistic fake social media profile detection using profile signals, aggregated user activity, SMOTE balancing, PCA feature engineering, train/test overfitting checks, a web dashboard, and a REST API.</p>
+  </section>
+
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>{{ metadata.records }}</b><span>User-level records</span></div>
+      <div class="stat"><b>{{ metadata.features_before_encoding }}</b><span>Final model features</span></div>
+      <div class="stat"><b>{{ '%.3f'|format(metadata.test_f1_best) }}</b><span>Best test F1-score</span></div>
+      <div class="stat"><b>{{ '%.3f'|format(metadata.best_generalization_gap) }}</b><span>Best F1 gap</span></div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Project Scope</h2>
+      <div class="scope">
+        <div class="scope-item"><b>Business Problem</b><span class="muted">Detect fake accounts that may be used for phishing, spam, impersonation, social engineering, or misinformation.</span></div>
+        <div class="scope-item"><b>ML Objective</b><span class="muted">Binary classification: Real profile vs Fake profile using account-level and aggregated activity-level signals.</span></div>
+        <div class="scope-item"><b>Deployment Scope</b><span class="muted">Use either a saved dataset row or custom user-entered values, then compare predictions across six trained algorithms.</span></div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-title">Analyze a User Profile</h2>
+        <div class="tabs">
+          <button class="tab active" type="button" data-tab="rowMode">Use Dataset Row Index</button>
+          <button class="tab" type="button" data-tab="manualMode">Enter Values Manually</button>
+        </div>
+        <form id="predictionForm">
+          <div class="form-grid">
+            <div>
+              <label>Select Algorithm</label>
+              <select name="model_name" id="model_name">
+                {% for name in model_names %}
+                  <option value="{{ name }}" {% if name == selected_model %}selected{% endif %}>{{ name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div id="rowMode" class="mode-block">
+              <label>User Row Index</label>
+              <input type="number" id="user_index" name="user_index" value="31" min="0" max="{{ total_rows - 1 }}">
+            </div>
+          </div>
+
+          <div id="manualMode" class="mode-block hidden">
+            <p class="muted">Enter the most important profile and activity values. The app automatically fills remaining model features with training-set medians/modes and computes engineered features such as engagement rate and profile signal score.</p>
+            <div class="mini-title">Numerical Inputs</div>
+            <div class="manual-grid">
+              {% for item in numeric_inputs %}
+              <div>
+                <label>{{ item.label }}</label>
+                <input type="number" name="{{ item.name }}" value="{{ defaults.get(item.name, 0)|round(3) }}" min="{{ item.min }}" max="{{ item.max }}" step="{{ item.step }}">
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="mini-title">Profile Signals</div>
+            <div class="manual-grid">
+              {% for col in boolean_inputs %}
+              <div>
+                <label>{{ col.replace('_',' ').title() }}</label>
+                <select name="{{ col }}">
+                  <option value="1" {% if defaults.get(col,0)|int == 1 %}selected{% endif %}>Yes</option>
+                  <option value="0" {% if defaults.get(col,0)|int == 0 %}selected{% endif %}>No</option>
+                </select>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="mini-title">Categorical Inputs</div>
+            <div class="manual-grid">
+              {% for col in categorical_inputs %}
+              <div>
+                <label>{{ col.replace('_',' ').title() }}</label>
+                <select name="{{ col }}">
+                  {% for val in categorical_values.get(col, []) %}
+                    <option value="{{ val }}" {% if defaults.get(col) == val %}selected{% endif %}>{{ val }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <button class="main" type="submit">Run Profile Classification</button>
+          <div class="hint">Row mode validates against a real record from the dataset. Manual mode behaves like the example project by letting the user enter values and evaluate them using the saved preprocessing and model artifacts.</div>
+        </form>
+        <div id="errorBox" class="error hidden"></div>
+        <div id="resultBox" class="result hidden"></div>
+      </div>
+
+      <div class="card dark">
+        <h2 class="section-title">Deployment Summary</h2>
+        <p><b>Best model:</b> {{ metadata.best_model }}</p>
+        <p><b>Best test accuracy:</b> {{ '%.3f'|format(metadata.test_accuracy_best) }}</p>
+        <p><b>Best test F1-score:</b> {{ '%.3f'|format(metadata.test_f1_best) }}</p>
+        <p><b>PCA explained variance:</b> {{ '%.3f'|format(metadata.pca_explained_variance) }}</p>
+        <p><b>SMOTE records after resampling:</b> {{ metadata.smote_records_after_resampling }}</p>
+        <div class="note">This version includes leakage control and an overfitting report, so the results are strong but realistic instead of the previous suspicious 100% score.</div>
+        <div class="api"><b>API Endpoints</b><br><code>GET /api/status</code><br><code>GET /api/metadata</code><br><code>GET /api/sample-row/&lt;index&gt;</code><br><code>POST /api/predict</code> using <code>python api_app.py</code> on port 5001.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h2 class="section-title">Model Comparison Report</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>Train Acc</th><th>Test Acc</th><th>Precision</th><th>Recall</th><th>Train F1</th><th>Test F1</th><th>F1 Gap</th></tr></thead>
+          <tbody>
+            {% for row in comparison_rows %}
+              <tr><td><b>{{ row['Model'] }}</b></td><td>{{ row['Train Accuracy'] }}</td><td>{{ row['Test Accuracy'] }}</td><td>{{ row['Precision'] }}</td><td>{{ row['Recall'] }}</td><td>{{ row['Train F1-Score'] }}</td><td>{{ row['Test F1-Score'] }}</td><td>{{ row['Generalization Gap'] }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="card chart-card"><h2 class="section-title">Key Feature Distributions</h2><img src="{{ url_for('report_file', filename='eda_key_feature_distributions.png') }}" alt="Key feature distributions"></div>
+      <div class="card chart-card"><h2 class="section-title">Important Features by Class</h2><img src="{{ url_for('report_file', filename='eda_key_feature_boxplots.png') }}" alt="Important feature boxplots"></div>
+      <div class="card chart-card"><h2 class="section-title">Model F1-Score Comparison</h2><img src="{{ url_for('report_file', filename='model_comparison_f1.png') }}" alt="Model comparison F1"></div>
+      <div class="card chart-card"><h2 class="section-title">Overfitting Gap Check</h2><img src="{{ url_for('report_file', filename='overfitting_gap.png') }}" alt="Overfitting gap"></div>
+    </div>
+
+    <div class="footer">Run <code>python train_models.py</code> to retrain, <code>python app.py</code> for the web dashboard, or <code>python api_app.py</code> for REST API deployment.</div>
+  </main>
+
+  <script>
+    let currentMode = 'row';
+    const rowBlock = document.getElementById('rowMode');
+    const manualBlock = document.getElementById('manualMode');
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        currentMode = tab === 'rowMode' ? 'row' : 'manual';
+        rowBlock.classList.toggle('hidden', currentMode !== 'row');
+        manualBlock.classList.toggle('hidden', currentMode !== 'manual');
+      });
+    });
+
+    function pctWidth(value){return Math.max(0, Math.min(100, Number(value || 0)));}
+    function renderResult(data){
+      const box = document.getElementById('resultBox');
+      box.className = 'result ' + (data.input_mode === 'manual' ? 'manual' : (data.is_correct ? 'good' : 'bad'));
+      const predClass = data.predicted === 'Fake' ? 'fake' : 'real';
+      const riskClass = (data.risk || 'low').toLowerCase();
+      const actualHtml = data.actual ? `<b>Actual class:</b> ${data.actual} &nbsp; | &nbsp; <b>Status:</b> ${data.is_correct ? 'Correct prediction' : 'Needs review'}` : '<b>Manual input:</b> no actual class available';
+      const prob = data.fake_probability !== null && data.fake_probability !== undefined ? data.fake_probability : 0;
+      const summary = Object.entries(data.summary || {}).map(([k,v]) => `<div class="detail"><b>${k}</b>${v}</div>`).join('');
+      box.innerHTML = `
+        <div class="result-head">
+          <div><b>Mode:</b> ${data.input_mode === 'row' ? 'Dataset Row' : 'Manual Values'}<br><b>${data.user_index !== null ? 'Selected row:' : 'Model:'}</b> ${data.user_index !== null ? data.user_index : data.model}<br>${data.user_index !== null ? '<b>Model:</b> '+data.model : ''}</div>
+          <div><span class="pill ${predClass}">${data.predicted}</span><span class="pill ${riskClass}">${data.risk} Risk</span></div>
+        </div>
+        <div>${actualHtml}</div>
+        <div class="gauge"><span style="width:${pctWidth(prob)}%"></span></div>
+        <div><b>Fake probability:</b> ${data.fake_probability ?? 'N/A'}% &nbsp; | &nbsp; <b>Confidence:</b> ${data.confidence ?? 'N/A'}%</div>
+        <div class="details">${summary}</div>`;
+      box.classList.remove('hidden');
+    }
+
+    document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('errorBox');
+      err.classList.add('hidden');
+      const btn = e.target.querySelector('button.main');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+      const form = new FormData(e.target);
+      const payload = {model_name: form.get('model_name'), input_mode: currentMode};
+      if(currentMode === 'row'){
+        payload.user_index = document.getElementById('user_index').value;
+      } else {
+        const features = {};
+        form.forEach((value,key)=>{ if(key !== 'model_name' && key !== 'user_index'){ features[key] = value; }});
+        payload.features = features;
+      }
+      try{
+        const response = await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+        const data = await response.json();
+        if(!data.success){ throw new Error(data.error || 'Prediction failed'); }
+        renderResult(data);
+      } catch(ex){
+        err.textContent = ex.message;
+        err.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Run Profile Classification';
+      }
+    });
+  </script>
+</body>
+</html>
