@@ -241,10 +241,10 @@ Fake_Profile_Detection_Project/
 ---
 
 ## Team
-The rubric allows exactly **2 or 3 students**. Do not submit a team of 4 students unless the instructor explicitly allows it.
 
 - Student 1: Ammar Aikan
 - Student 2: Yousif Farouk
 - Student 3: Aiban Mohammed
+- Student 4:Naser Ali
 
-> If Naser Ali is part of the group, remove one name above or ask the instructor for approval, because the rubric says teams of 4+ are not permitted.
+
