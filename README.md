@@ -247,4 +247,8 @@ Fake_Profile_Detection_Project/
 - Student 3: Aiban Mohammed
 - Student 4:Naser Ali
 
+## Rights
+
+© 2026 SocialGuard Project Contributors. All Rights Reserved. Copyright in each contribution remains with its respective contributor. See [COPYRIGHT.md](COPYRIGHT.md).
+
 
