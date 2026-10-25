@@ -262,4 +262,8 @@ Fake_Profile_Detection_Project/
 - Performance values describe the tracked coursework split and do not establish accuracy on another platform, time period, or population.
 - Dataset licensing and privacy terms must be confirmed before redistribution or external deployment.
 
+## Rights
+
+© 2026 SocialGuard Project Contributors. All Rights Reserved. Copyright in each contribution remains with its respective contributor. See [COPYRIGHT.md](COPYRIGHT.md).
+
 
