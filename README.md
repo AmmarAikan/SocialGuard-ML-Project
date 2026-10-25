@@ -1,5 +1,7 @@
 # SocialGuard AI: Fake Social Media Profile Detection Using Machine Learning
 
+**Status:** academic machine-learning project. Its predictions support experimentation and review; they are not proof that an account is malicious and should not be used as the sole basis for enforcement decisions.
+
 ## Project Scope
 
 ### Business Problem
@@ -28,7 +30,11 @@ The project uses the Kaggle dataset **Fake Profile and Post Detection on Social 
 - `data/raw_user_profiles.csv`: account/profile-level data.
 - `data/raw_user_activities.csv`: post/activity-level data.
 
-The two-file issue is solved by aggregating post/activity records by `user_id`, then merging the aggregated features with profile records. This creates one clean user-level dataset: `data/processed_user_dataset.csv`.
+The two-file issue is solved by aggregating post/activity records by `user_id`, then merging the aggregated features with profile records. This creates one user-level dataset: `data/processed_user_dataset.csv`.
+
+The raw and processed CSV files currently tracked for coursework reproducibility retain source identifier and profile columns, including names, usernames, email, and location fields. They must not be described as anonymized production data. The modeling code excludes these columns before fitting a classifier, but that feature-selection step does not remove them from the stored CSV files.
+
+The repository records the dataset title but not its exact Kaggle URL or redistribution license. Verify the original listing, license, and privacy terms before redistributing or reusing the data outside this coursework.
 
 ---
 
@@ -40,7 +46,7 @@ The two-file issue is solved by aggregating post/activity records by `user_id`, 
 - Parsed timestamp values.
 - Standardized Boolean columns.
 - Merged profile and activity data at user level.
-- Removed identifiers and PII such as names, usernames, emails, and user IDs.
+- Excluded identifiers and PII such as names, usernames, emails, and user IDs from the model feature matrix.
 - Controlled potential data leakage by excluding overly strong direct-proxy columns.
 - Handled missing values using `SimpleImputer` inside the preprocessing pipeline.
 
@@ -96,6 +102,8 @@ The results meet the required minimum of 80% Accuracy and F1-Score while keeping
 ---
 
 ## Saved Artifacts
+
+The `.joblib` and `.pkl` files are Python serialized objects. Load only the trusted artifacts tracked with this project; never load a model file supplied by an untrusted user because deserialization can execute code.
 
 The project saves deployment artifacts similar to the example project:
 
@@ -245,6 +253,13 @@ Fake_Profile_Detection_Project/
 - Student 1: Ammar Aikan
 - Student 2: Yousif Farouk
 - Student 3: Aiban Mohammed
-- Student 4:Naser Ali
+- Student 4: Naser Ali
+
+## Responsible Use and Limitations
+
+- Treat each prediction as a model output requiring human review, not a factual accusation.
+- Do not submit private or live account data without a lawful basis and appropriate consent.
+- Performance values describe the tracked coursework split and do not establish accuracy on another platform, time period, or population.
+- Dataset licensing and privacy terms must be confirmed before redistribution or external deployment.
 
 
